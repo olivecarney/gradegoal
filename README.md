@@ -1,73 +1,81 @@
-# React + TypeScript + Vite
+# GradeGoal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GradeGoal is a modern, responsive web application built with **React**, **TypeScript**, and **Vite** designed to help students calculate the grades they need on upcoming finals or assignments to reach their target course grade.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Dynamic Grade Calculation**: Uses a real-time `useMemo` calculation to determine the exact percentage needed on remaining coursework based on current assignment weights and scores.
+* **Target Setting**: Easily set and adjust your goal grade (e.g., 90%).
+* **Assignment Management**: Add, update, or delete multiple assignments with specific weights and scores.
+* **Status Indicators**:
+* **🎉 You're Safe**: Displayed when your target is already met based on current scores.
+* **🎯 Needed**: Shows the specific percentage required on the remaining weight.
+* **💀 Impossible**: Alerts you if the target grade is mathematically unattainable.
 
-## React Compiler
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+* **Dark Mode Support**: Built-in theme toggling using `next-themes` and a custom `ThemeProvider`.
+* **Modern UI**: Styled with **Tailwind CSS** and **Shadcn UI** components (Card, Input, Button, Label) for a clean, professional look.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Framework**: [React 19](https://react.dev/)
+* **Build Tool**: [Vite](https://vitejs.dev/)
+* **Language**: [TypeScript](https://www.typescriptlang.org/)
+* **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+* **Components**: [Shadcn UI](https://ui.shadcn.com/) (Radix UI primitives)
+* **Icons**: [Lucide React](https://lucide.dev/)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* [Node.js](https://nodejs.org/)
+* [Bun](https://bun.sh/) (Recommended, as indicated by `bun.lock`) or `npm`/`yarn`
+
+### Installation
+
+1. **Clone the repository**:
+```bash
+git clone <repository-url>
+cd gradegoal
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Install dependencies**:
+```bash
+bun install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+
+
+3. **Run the development server**:
+```bash
+bun run dev
+
+```
+
+
+4. **Build for production**:
+```bash
+bun run build
+
+```
+
+
+
+## Project Structure
+
+* `src/App.tsx`: The main application logic and grade calculation engine.
+* `src/components/AssignmentRow.tsx`: A reusable component for managing individual assignment inputs.
+* `src/components/ui/`: Contains primitive UI components like buttons, inputs, and cards.
+* `src/components/theme-provider.tsx`: Logic for handling light and dark mode.
+
+## Linting
+
+The project uses ESLint with type-aware rules for TypeScript and React. To run the linter:
+
+```bash
+bun run lint
+
 ```
