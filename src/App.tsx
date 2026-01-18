@@ -37,8 +37,6 @@ export default function App() {
 
     const finalWeight = 100 - totalWeightUsed;
 
-    // Logic: (Target - Current Points) / (Weight of Final as a decimal)
-    // Coerce target to number for calculation, treating empty string as 0
     const targetNum = Number(target);
     const needed = finalWeight > 0
       ? (targetNum - currentPoints) / (finalWeight / 100)
