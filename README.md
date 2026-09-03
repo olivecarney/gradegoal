@@ -36,7 +36,7 @@ GradeGoal is a modern, responsive web application built with **React**, **TypeSc
 
 1. **Clone the repository**:
 ```bash
-git clone <repository-url>
+git clone https://github.com/olivecarney/gradegoal.git
 cd gradegoal
 
 ```
@@ -77,5 +77,4 @@ The project uses ESLint with type-aware rules for TypeScript and React. To run t
 
 ```bash
 bun run lint
-
 ```
